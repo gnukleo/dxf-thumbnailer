@@ -20,10 +20,6 @@ parser.add_argument('-o', '--output', type=str, metavar='PATH TO FILE',
 # get arguments parameters
 args = parser.parse_args()
 
-with open('/tmp/pepito', "a") as f:
-    #f.write(args.input)
-    f.write(args.output)
-
 def check_args():
     # if not any parameters, exit
     if args.input is None:
