@@ -44,7 +44,7 @@ def create_thumbnail():
     backend = pymupdf.PyMuPdfBackend()
     cfg = config.Configuration(
         background_policy=config.BackgroundPolicy.WHITE,
-        #color_policy=config.ColorPolicy.BLACK,
+        color_policy=config.ColorPolicy.BLACK,
     )
     frontend = Frontend(RenderContext(doc), backend, config=cfg)
     frontend.draw_layout(msp)
