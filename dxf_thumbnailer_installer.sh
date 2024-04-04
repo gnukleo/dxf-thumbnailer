@@ -1,5 +1,4 @@
 # first create a virtual envirement for dependencies
-sudo mkdir -p /opt
 sudo python3 -m venv /usr/local/share/.dxf_thumbnailer_python_venv
 
 # install all dependencies
