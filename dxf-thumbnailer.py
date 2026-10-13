@@ -1,4 +1,4 @@
-#!usr/local/share/.dxf_thumbnailer_python_venv/bin/python
+#!/usr/local/share/.dxf_thumbnailer_python_venv/bin/python
 # -*- coding: utf-8 -*-
 
 # from ezdxf example
@@ -10,15 +10,14 @@ from ezdxf.addons.drawing import Frontend, RenderContext, layout, config, pymupd
 
 
 # set parser parameters
-parser = argparse.ArgumentParser(description='Extract the thubnail from LightBurn files')
-parser.add_argument('-i', '--input', type=str, metavar='PATH TO FILE',
-                    help='input file to extract thumbnail')
-parser.add_argument('-o', '--output', type=str, metavar='PATH TO FILE',
-                    help='ouput file to save a jpeg')
+parser = argparse.ArgumentParser(description="Extract the thubnail from LightBurn files")
+parser.add_argument("-i", "--input", type=str, metavar="PATH TO FILE", help="input file to extract thumbnail")
+parser.add_argument("-o", "--output", type=str, metavar="PATH TO FILE", help="ouput file to save a jpeg")
 
 
 # get arguments parameters
 args = parser.parse_args()
+
 
 def check_args():
     # if not any parameters, exit
@@ -28,7 +27,7 @@ def check_args():
     if args.output is None:
         print("No se proporciono el archido de salida")
         sys.exit(1)
-        
+
 
 def create_thumbnail():
     try:
@@ -49,12 +48,12 @@ def create_thumbnail():
     frontend = Frontend(RenderContext(doc), backend, config=cfg)
     frontend.draw_layout(msp)
     page = layout.Page(128, 128, layout.Units.px, margins=layout.Margins.all(2))
-    
+
     png_bytes = backend.get_pixmap_bytes(page, fmt="png", dpi=96)
     with open(args.output, "wb") as fp:
         fp.write(png_bytes)
-    
-    
+
+
 check_args()
 create_thumbnail()
 
